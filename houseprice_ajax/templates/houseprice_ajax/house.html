@@ -1,0 +1,182 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}Melbourne House Market{% endblock %}
+{% block content %}
+    <h3>Melbourne House Market</h3>
+    <div class="container">
+        <form action="" id="addHouse">
+            <div class="form-group" >
+    
+                <input type="text" class="form-control" name="suburb" id="suburb" placeholder="Suburb">
+    
+            </div>
+            <div class="form-group" >
+    
+                <input type="text" class="form-control" name="address" id="address" placeholder="Address">
+    
+            </div>
+        
+            <div class="form-group" >
+    
+                <input type="number" class="form-control" name="rooms" id="rooms" placeholder="rooms" min="0">
+    
+            </div>
+            <div class="form-group">
+                
+                <label for="house_type">House Type</label>
+
+                <select name="house_type" id="house_type">
+                    <option selected>br</option>
+                    <option>h</option>
+                    <option>u</option>
+                    <option>t</option>
+                </select>
+            </div>
+     
+            <div class="form-group">
+                <input type="number" class="form-control" name="price" id="price" placeholder="price" min="0">
+    
+            </div>
+
+            <div class="form-group">
+
+                <label for="method">Method</label>
+
+                <select name="method" id="method">
+                    <option selected>S</option>
+                    <option>SP</option>
+                    <option>PI</option>
+                    <option>PN</option>
+                    <option>NB</option>
+                </select>
+            </div>
+            
+            
+
+             <div class="form-group">
+    
+                <input type="date" class="form-control" name="date" id="date" placeholder="date">
+    
+            </div>
+
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="col-md-8">
+        <h3>Houses</h3>
+        <table id="houseTable" class="table table-sriped">
+            <tr>
+                <th>Suburb</th>
+                <th>Address</th>
+                <th>Rooms</th>
+                <th>House Type</th>
+                <th>Price</th>
+                <th>Method</th>
+                <th>Date</th>
+            </tr>
+            {% for house in house_list %}
+                <tr id="houseTr{{ house.id }}">
+                    <td class="houseSuburb houseData" name="suburb">{{ house.suburb }}</td>
+                    <td class="houseAddress houseData" name="address">{{ house.address }}</td>
+                    <td class="houseRooms houseData" name="rooms">{{ house.rooms }}</td>
+                    <td class="houseHouse_type houseData" name="house_type">{{ house.house_type }}</td>
+                    <td class="housePrice houseData" name="price">{{ house.price }}</td>
+                    <td class="houseMethod houseData" name="method">{{ house.method }}</td>
+                    <td class="houseDate houseData" name="date">{{ house.date }}</td>
+                    <td style="center">
+                        <button class="btn btn-success form-control" onclick="editHouse({{house.id}})" data-toggle="modal" data-target="#myModal">EDIT</button>
+                
+                    </td>
+                    <td style="center">
+                        <button class="btn btn-danger form-control" onclick="deleteHouse({{house.id}})">DELETE</button>
+                    </td>
+                </tr>
+                {% empty %}
+                     No houses
+            {% endfor %}
+            
+            
+        </table>
+
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Update House</h4>
+              <button type="button" class="close" data-dismiss="modal">x</button>
+            </div>
+      
+            <!-- Modal body -->
+            <form action="" id="updateHouse">
+            
+                    
+                
+                <div class="modal-body">
+                    
+                        <input type="hidden" class="form-control" id="form-id" name="formId">
+
+
+                        <label for="suburb">Suburb</label>
+                        <input type="text" class="form-control" name="formSuburb" id="form-suburb">
+            
+                    
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" name="formAddress" id="form-address">
+            
+                        
+                        <label for="rooms">Rooms</label>        
+                        <input type="number" class="form-control" name="formRooms" id="form-rooms" min="0" >
+
+                        
+                        
+                        <div class="form-group">
+                            <label for="house_type">House Type</label>
+                            <input type="text" name="formHouse_type" id="form-house_type">
+                                
+                            
+                        </div>
+                        
+                        <br>
+                    
+                        
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" name="formPrice" id="form-price" min="0" >
+            
+            
+                        <div class="form-group">
+                            <label for="method">Method</label>
+                       
+                            <input type="text" name="formMethod" id="form-method">
+                               
+                            
+                        </div>
+                       
+
+                        <br>  
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" name="formDate" id="form-date" >
+
+            
+
+                  </div>
+                
+            
+           
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    
+    
+{% endblock %}
