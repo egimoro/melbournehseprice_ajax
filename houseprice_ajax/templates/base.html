@@ -12,19 +12,15 @@
     <title>{% block title %}Hello, Melbourne! {% endblock  %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">House Price Ajax</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Melbourne House Market <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
+  
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Melbourne House Market</li>
+      </ol>
     </nav>
+    
+   
+  
     {% block content %}
     {% endblock %}
 
@@ -34,6 +30,6 @@
     <script src="{% static 'js/form.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
- 
+  
   </body>
 </html>
